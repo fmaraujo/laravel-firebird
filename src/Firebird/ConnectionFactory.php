@@ -65,7 +65,7 @@ class ConnectionFactory extends BaseConnectionFactory {
    * Create a new connection instance.
    *
    * @param  string   $driver
-   * @param  \PDO     $connection
+   * @param  \PDO|\Closure     $connection
    * @param  string   $database
    * @param  string   $prefix
    * @param  array    $config
@@ -73,7 +73,7 @@ class ConnectionFactory extends BaseConnectionFactory {
    *
    * @throws \InvalidArgumentException
    */
-  protected function createConnection($driver, PDO $connection, $database, $prefix = '', array $config = [])
+  protected function createConnection($driver, $connection, $database, $prefix = '', array $config = [])
   {
     if ($this->container->bound($key = "db.connection.{$driver}"))
     {
